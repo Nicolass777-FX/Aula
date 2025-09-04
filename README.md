@@ -107,3 +107,68 @@ if resultados:
         print(f"   Tipo: {caminhao['tipo'].capitalize()} | Combustível: {caminhao['combustivel'].capitalize()} | Preço: {formatar_preco(caminhao['preco'])}\n")
 else:
     print("⚠️ Nenhum caminhão encontrado com as suas preferências.")
+
+
+
+    Novo código
+   # Lista de 20 carros esportivos
+carros = [
+    {"nome": "Ferrari 488 GTB", "marca": "Ferrari", "potencia": 670, "combustivel": "gasolina", "preco": 2500000},
+    {"nome": "Lamborghini Huracán Evo", "marca": "Lamborghini", "potencia": 640, "combustivel": "gasolina", "preco": 2700000},
+    {"nome": "Porsche 911 Turbo S", "marca": "Porsche", "potencia": 650, "combustivel": "gasolina", "preco": 1600000},
+    {"nome": "McLaren 720S", "marca": "McLaren", "potencia": 720, "combustivel": "gasolina", "preco": 3000000},
+    {"nome": "Aston Martin Vantage", "marca": "Aston Martin", "potencia": 510, "combustivel": "gasolina", "preco": 1200000},
+
+    {"nome": "Chevrolet Corvette Stingray", "marca": "Chevrolet", "potencia": 495, "combustivel": "gasolina", "preco": 800000},
+    {"nome": "Nissan GT-R Nismo", "marca": "Nissan", "potencia": 600, "combustivel": "gasolina", "preco": 1500000},
+    {"nome": "Audi R8 V10 Performance", "marca": "Audi", "potencia": 620, "combustivel": "gasolina", "preco": 1300000},
+    {"nome": "BMW M4 Competition", "marca": "BMW", "potencia": 510, "combustivel": "gasolina", "preco": 700000},
+    {"nome": "Mercedes-AMG GT R", "marca": "Mercedes-Benz", "potencia": 585, "combustivel": "gasolina", "preco": 1400000},
+
+    {"nome": "Toyota Supra GR", "marca": "Toyota", "potencia": 387, "combustivel": "gasolina", "preco": 450000},
+    {"nome": "Ford Mustang Mach 1", "marca": "Ford", "potencia": 483, "combustivel": "gasolina", "preco": 500000},
+    {"nome": "Jaguar F-Type R", "marca": "Jaguar", "potencia": 575, "combustivel": "gasolina", "preco": 1100000},
+    {"nome": "Maserati MC20", "marca": "Maserati", "potencia": 630, "combustivel": "gasolina", "preco": 2200000},
+    {"nome": "Lotus Evora GT", "marca": "Lotus", "potencia": 416, "combustivel": "gasolina", "preco": 900000},
+
+    {"nome": "Alfa Romeo Giulia Quadrifoglio", "marca": "Alfa Romeo", "potencia": 510, "combustivel": "gasolina", "preco": 700000},
+    {"nome": "Dodge Challenger SRT Hellcat", "marca": "Dodge", "potencia": 717, "combustivel": "gasolina", "preco": 950000},
+    {"nome": "Tesla Roadster", "marca": "Tesla", "potencia": 1000, "combustivel": "elétrico", "preco": 1800000},
+    {"nome": "Koenigsegg Jesko", "marca": "Koenigsegg", "potencia": 1280, "combustivel": "gasolina", "preco": 12000000},
+    {"nome": "Pagani Huayra", "marca": "Pagani", "potencia": 730, "combustivel": "gasolina", "preco": 14000000},
+]
+
+# Função para recomendar carros dentro do orçamento
+def recomendar_carros(lista, preco_max):
+    return [carro for carro in lista if carro["preco"] <= preco_max]
+
+# Função para formatar preço em R$
+def formatar_preco(valor):
+    return f"R$ {valor:,.0f}".replace(",", ".")
+
+# Programa principal
+def main():
+    print("🏎️ Bem-vindo ao sistema de recomendação de carros esportivos!\n")
+
+    try:
+        preco_max = int(input("💰 Qual o valor máximo que você quer gastar? (em reais): "))
+        recomendados = recomendar_carros(carros, preco_max)
+
+        print("\n🔎 Carros dentro do seu orçamento:\n")
+
+        if recomendados:
+            for i, carro in enumerate(recomendados, start=1):
+                print(f"{i}. {carro['nome']} ({carro['marca']})")
+                print(f"   Potência: {carro['potencia']} cv | Combustível: {carro['combustivel'].capitalize()} | Preço: {formatar_preco(carro['preco'])}")
+                print("   " + "-"*60)
+        else:
+            print("⚠️ Nenhum carro encontrado nesse valor.")
+
+    except ValueError:
+        print("❌ Digite um número válido.")
+
+# Executar programa
+if __name__ == "__main__":
+    main()
+
+
